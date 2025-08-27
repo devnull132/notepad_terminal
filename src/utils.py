@@ -55,7 +55,6 @@ class Utils:
         }
 
     def get_extension_type(self, extension: str) -> str:
-        """Определяет тип расширения для выбора цвета"""
         programming_exts = {"py", "java", "js", "ts", "cpp", "c", "cs", "php", "rb", "go", "rs", "swift", "kt"}
         markup_exts = {"html", "css", "md"}
         data_exts = {"json", "xml", "yml", "yaml", "sql", "csv"}
