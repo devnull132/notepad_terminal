@@ -96,5 +96,19 @@ class Utils:
         os.system("cls" if os.name == "nt" else "clear")
         self.print_ext(extension)
 
+    def edit(self, buffer: list):
+        while True:
+            line_idx = input("введите номер строки: ")
+            try:
+                line_idx = int(line_idx)
+                if line_idx > len(buffer) or line_idx <= 0:
+                    print(f"""Ишак? ща {'System 32 удалю нах' if os.name == 'nt' else 'sudo rm -rf ./ --no-preserve-root сделаю'}\n
+                    всего строк: {len(buffer)}""")
+                else: 
+                    break 
+            except ValueError:
+                print(f"Ишак? ща {'System 32 удалю нах' if os.name == 'nt' else 'sudo rm -rf ./ --no-preserve-root сделаю'} число введи!")
+        
+        
 
 
