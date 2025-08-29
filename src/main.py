@@ -1,5 +1,10 @@
 from editor import TextEditor
 
-txt_editor = TextEditor('file.txt')
-txt_editor.edit_text()
+def main():
+    filename = input("Введите имя файла: ")
+    txt_editor = TextEditor(filename=filename)
+    txt_editor.edit_text()
+
+if __name__ == "__main__":
+    main()
 
