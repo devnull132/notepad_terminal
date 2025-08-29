@@ -1,8 +1,7 @@
 import os
-from colorama import  Fore, Style, init 
+from colorama import Fore, Style, init 
 
 init(autoreset=True)
-
 class Utils:
     def __init__(self):
         self.file_extensions = {
@@ -40,7 +39,6 @@ class Utils:
             "bat": "Batch",
             "ps1": "PowerShell",
             
-            # Other
             "dockerfile": "Dockerfile",
             "gitignore": "Git Ignore"
         }
@@ -91,24 +89,45 @@ class Utils:
         print(color + centered_header)
         
         print(Fore.YELLOW + "─" * terminal_width)
+        
+        commands = "Команды: !=!quit!=! - выход, !=!save!=! - сохранить, !=!edit_line!=! - редактировать строку"
+        print(Fore.BLUE + commands.center(terminal_width))
+        print(Fore.YELLOW + "─" * terminal_width)
 
     def design(self, extension: str):
         os.system("cls" if os.name == "nt" else "clear")
         self.print_ext(extension)
 
     def edit(self, buffer: list):
+        if not buffer:
+            print("Буфер пуст!")
+            return False
+        os.system("cls" if os.name == "nt" else "clear")
+        print("\nТекущее содержимое:")
+        for i, line in enumerate(buffer, 1):
+            print(f"{i:2}: {line}")
+        
         while True:
-            line_idx = input("введите номер строки: ")
+            line_idx = input("\nВведите номер строки для редактирования: ")
             try:
                 line_idx = int(line_idx)
                 if line_idx > len(buffer) or line_idx <= 0:
-                    print(f"""Ишак? ща {'System 32 удалю нах' if os.name == 'nt' else 'sudo rm -rf ./ --no-preserve-root сделаю'}\n
-                    всего строк: {len(buffer)}""")
-                else: 
-                    break 
+                    print(f"Неверный номер строки! Доступно строк: {len(buffer)}")
+                    continue
+                break
             except ValueError:
-                print(f"Ишак? ща {'System 32 удалю нах' if os.name == 'nt' else 'sudo rm -rf ./ --no-preserve-root сделаю'} число введи!")
+                print("Пожалуйста, введите число!")
         
+        current_line = buffer[line_idx-1]
+        print(f"\nРедактирование строки {line_idx}:")
+        print(f"Текущее: {current_line}")
         
-
-
+        new_line = input("Новое содержимое: ")
+        
+        if new_line.strip():  
+            buffer[line_idx-1] = new_line
+            print(f"Строка {line_idx} успешно изменена!")
+            return True
+        else:
+            print("Изменения отменены.")
+            return False

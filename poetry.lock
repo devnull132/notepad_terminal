@@ -12,7 +12,18 @@ files = [
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
 ]
 
+[[package]]
+name = "getkey"
+version = "0.6.5"
+description = "Read single characters and key-strokes"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "getkey-0.6.5.tar.gz", hash = "sha256:68c7c702c3b34deacf427f6c0f1fd66c5c2aa12d7801aa32442fc1a71c8ce059"},
+]
+
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "ff4db7151c058eb2992a5a04a0fce2fa189ff839472b11fc9ed5a7ffcd090c98"
+content-hash = "3de4c39c8eb668db3fcf65db5ff4f3b87d45236c9d5669769c68f6ab6a531dbe"
